@@ -1,14 +1,294 @@
-🛍️ Rekomendasi Produk
-Berikut beberapa produk pilihan yang bisa kamu beli langsung lewat link di bawah ini.
-No	Produk	Harga	Link
-1	Setelan Anak 17 Agustus Nyaman 2-10 Tahun	Rp46.788	Beli
-2	Setelan Merah Putih Premium Bahan Combed	Rp125.549	Beli
-3	1 Set Baju Olahraga Merah Putih Couple Wanita	Rp137.610	Beli
-4	Bendera Segitiga Merah Putih Sablon Garuda	Rp15.000	Beli
-5	Nano Sportswear Baju Senam Merah Putih Premium	Rp166.500	Beli
-6	Sepatu Sneakers Wanita Kekinian Terlaris - 991	Rp58.567	Beli
-7	Setelan Baju Senam Merah Putih Pria Wanita	Rp137.610	Beli
-8	Bergo Hamidah Size XL | Hijab Jersey	Rp24.609	Beli
-9	Tas Selempang Wanita Alesha	Rp36.500	Beli
-10	Setelan Workout Rok / Setelan Senam Wanita Rok	Rp148.500	Beli
-11	Beli 1 Dapat 4 Parfum Mr Crsh Tahan 6 Jam	Rp29.925	Beli
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HappyLoop Store</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+color:#333;
+}
+
+header{
+background:#ee4d2d;
+color:white;
+padding:22px 15px;
+text-align:center;
+}
+
+header h1{
+margin:0;
+font-size:30px;
+}
+
+header p{
+margin:8px 0 0;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:25px 15px;
+}
+
+.search{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px;
+margin-bottom:25px;
+}
+
+.kategori{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:25px;
+}
+
+.kategori button{
+border:none;
+background:white;
+padding:10px 18px;
+border-radius:20px;
+cursor:pointer;
+border:1px solid #ddd;
+}
+
+.kategori button:hover{
+background:#ee4d2d;
+color:white;
+}
+
+.produk{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 2px 8px rgba(0,0,0,.12);
+transition:.2s;
+}
+
+.card:hover{
+transform:translateY(-4px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+background:#eee;
+}
+
+.card-content{
+padding:15px;
+}
+
+.card h3{
+font-size:17px;
+margin:0 0 10px;
+}
+
+.harga{
+color:#ee4d2d;
+font-size:20px;
+font-weight:bold;
+margin-bottom:12px;
+}
+
+.kategori-label{
+font-size:13px;
+color:#777;
+margin-bottom:12px;
+}
+
+.beli{
+display:block;
+text-align:center;
+background:#ee4d2d;
+color:white;
+text-decoration:none;
+padding:11px;
+border-radius:6px;
+}
+
+.beli:hover{
+background:#d84315;
+}
+
+footer{
+text-align:center;
+padding:25px;
+margin-top:40px;
+background:#333;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>🛍️ HappyLoop Store</h1>
+
+<p>Rekomendasi produk pilihan dan promo terbaik setiap hari</p>
+
+</header>
+
+<div class="container">
+
+<input
+type="text"
+id="search"
+class="search"
+placeholder="🔍 Cari produk..."
+onkeyup="cariProduk()"
+>
+
+<div class="kategori">
+
+<button onclick="filterKategori('Semua')">Semua</button>
+<button onclick="filterKategori('Fashion')">Fashion</button>
+<button onclick="filterKategori('Rumah Tangga')">Rumah Tangga</button>
+<button onclick="filterKategori('Elektronik')">Elektronik</button>
+<button onclick="filterKategori('Kecantikan')">Kecantikan</button>
+<button onclick="filterKategori('Anak')">Anak</button>
+
+</div>
+
+<div id="produk" class="produk"></div>
+
+</div>
+
+<footer>
+
+© 2026 HappyLoop Store
+
+</footer>
+
+<script>
+
+let produk = [
+
+{
+nama:"Setelan Anak 17 Agustus Nyaman 2-10 Tahun",
+harga:"Rp46.788",
+gambar:"https://down-id.img.susercontent.com/file/id-11134207-7r98o-lm5xxxxxxx",
+kategori:"Anak",
+link:"#"
+},
+
+{
+nama:"Setelan Merah Putih Premium Bahan Combed",
+harga:"Rp125.549",
+gambar:"https://down-id.img.susercontent.com/file/id-11134207-7r98o-lm5xxxxxxx",
+kategori:"Fashion",
+link:"#"
+},
+
+{
+nama:"Set Baju Olahraga Merah Putih Couple",
+harga:"Rp137.610",
+gambar:"https://down-id.img.susercontent.com/file/id-11134207-7r98o-lm5xxxxxxx",
+kategori:"Fashion",
+link:"#"
+}
+
+];
+
+function tampilProduk(data=produk){
+
+let html="";
+
+data.forEach(p=>{
+
+html+=`
+
+<div class="card">
+
+<img src="${p.gambar}" alt="${p.nama}">
+
+<div class="card-content">
+
+<h3>${p.nama}</h3>
+
+<div class="harga">${p.harga}</div>
+
+<div class="kategori-label">
+Kategori: ${p.kategori}
+</div>
+
+<a class="beli" href="${p.link}" target="_blank">
+🛒 Beli di Shopee
+</a>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("produk").innerHTML=html;
+
+}
+
+function cariProduk(){
+
+let kata=document.getElementById("search").value.toLowerCase();
+
+let hasil=produk.filter(p=>
+
+p.nama.toLowerCase().includes(kata)
+
+);
+
+tampilProduk(hasil);
+
+}
+
+function filterKategori(kategori){
+
+if(kategori==="Semua"){
+
+tampilProduk(produk);
+
+return;
+
+}
+
+let hasil=produk.filter(p=>
+
+p.kategori===kategori
+
+);
+
+tampilProduk(hasil);
+
+}
+
+tampilProduk();
+
+</script>
+
+</body>
+</html>
