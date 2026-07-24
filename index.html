@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HappyLoop Store</title>
+<title>HappyLoop Store - Rekomendasi Produk</title>
 
 <style>
 
@@ -22,17 +22,18 @@ color:#333;
 header{
 background:#ee4d2d;
 color:white;
-padding:22px 15px;
+padding:28px 15px;
 text-align:center;
 }
 
 header h1{
 margin:0;
-font-size:30px;
+font-size:32px;
 }
 
 header p{
-margin:8px 0 0;
+margin:10px 0 0;
+font-size:16px;
 }
 
 .container{
@@ -43,11 +44,11 @@ padding:25px 15px;
 
 .search{
 width:100%;
-padding:14px;
+padding:15px 18px;
 border:1px solid #ddd;
 border-radius:8px;
 font-size:16px;
-margin-bottom:25px;
+margin-bottom:22px;
 }
 
 .kategori{
@@ -58,12 +59,12 @@ margin-bottom:25px;
 }
 
 .kategori button{
-border:none;
-background:white;
-padding:10px 18px;
-border-radius:20px;
-cursor:pointer;
 border:1px solid #ddd;
+background:white;
+padding:11px 20px;
+border-radius:22px;
+cursor:pointer;
+font-size:14px;
 }
 
 .kategori button:hover{
@@ -73,7 +74,7 @@ color:white;
 
 .produk{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:20px;
 }
 
@@ -81,12 +82,13 @@ gap:20px;
 background:white;
 border-radius:10px;
 overflow:hidden;
-box-shadow:0 2px 8px rgba(0,0,0,.12);
+box-shadow:0 2px 10px rgba(0,0,0,.12);
 transition:.2s;
 }
 
 .card:hover{
-transform:translateY(-4px);
+transform:translateY(-5px);
+box-shadow:0 5px 16px rgba(0,0,0,.18);
 }
 
 .card img{
@@ -97,25 +99,26 @@ background:#eee;
 }
 
 .card-content{
-padding:15px;
+padding:16px;
 }
 
 .card h3{
 font-size:17px;
+line-height:1.4;
 margin:0 0 10px;
 }
 
 .harga{
 color:#ee4d2d;
-font-size:20px;
+font-size:21px;
 font-weight:bold;
-margin-bottom:12px;
+margin-bottom:10px;
 }
 
 .kategori-label{
 font-size:13px;
 color:#777;
-margin-bottom:12px;
+margin-bottom:15px;
 }
 
 .beli{
@@ -124,17 +127,26 @@ text-align:center;
 background:#ee4d2d;
 color:white;
 text-decoration:none;
-padding:11px;
+padding:12px;
 border-radius:6px;
+font-size:15px;
 }
 
 .beli:hover{
 background:#d84315;
 }
 
+.tidak-ditemukan{
+text-align:center;
+background:white;
+padding:40px;
+border-radius:10px;
+font-size:18px;
+}
+
 footer{
 text-align:center;
-padding:25px;
+padding:28px;
 margin-top:40px;
 background:#333;
 color:white;
@@ -153,7 +165,9 @@ color:white;
 
 </header>
 
+
 <div class="container">
+
 
 <input
 type="text"
@@ -163,20 +177,41 @@ placeholder="🔍 Cari produk..."
 onkeyup="cariProduk()"
 >
 
+
 <div class="kategori">
 
-<button onclick="filterKategori('Semua')">Semua</button>
-<button onclick="filterKategori('Fashion')">Fashion</button>
-<button onclick="filterKategori('Rumah Tangga')">Rumah Tangga</button>
-<button onclick="filterKategori('Elektronik')">Elektronik</button>
-<button onclick="filterKategori('Kecantikan')">Kecantikan</button>
-<button onclick="filterKategori('Anak')">Anak</button>
+<button onclick="filterKategori('Semua')">
+Semua
+</button>
+
+<button onclick="filterKategori('Fashion')">
+Fashion
+</button>
+
+<button onclick="filterKategori('Rumah Tangga')">
+Rumah Tangga
+</button>
+
+<button onclick="filterKategori('Elektronik')">
+Elektronik
+</button>
+
+<button onclick="filterKategori('Kecantikan')">
+Kecantikan
+</button>
+
+<button onclick="filterKategori('Anak')">
+Anak
+</button>
 
 </div>
+
 
 <div id="produk" class="produk"></div>
 
+
 </div>
+
 
 <footer>
 
@@ -184,89 +219,242 @@ onkeyup="cariProduk()"
 
 </footer>
 
+
 <script>
 
+
 let produk = [
+
 
 {
 nama:"Setelan Anak 17 Agustus Nyaman 2-10 Tahun",
 harga:"Rp46.788",
-gambar:"https://down-id.img.susercontent.com/file/id-11134207-7r98o-lm5xxxxxxx",
+gambar:"https://via.placeholder.com/500x500?text=Setelan+Anak+17+Agustus",
 kategori:"Anak",
 link:"#"
 },
 
+
 {
 nama:"Setelan Merah Putih Premium Bahan Combed",
 harga:"Rp125.549",
-gambar:"https://down-id.img.susercontent.com/file/id-11134207-7r98o-lm5xxxxxxx",
+gambar:"https://via.placeholder.com/500x500?text=Setelan+Merah+Putih",
 kategori:"Fashion",
 link:"#"
 },
 
+
 {
-nama:"Set Baju Olahraga Merah Putih Couple",
+nama:"1 Set Baju Olahraga Merah Putih Couple Wanita",
 harga:"Rp137.610",
-gambar:"https://down-id.img.susercontent.com/file/id-11134207-7r98o-lm5xxxxxxx",
+gambar:"https://via.placeholder.com/500x500?text=Baju+Olahraga",
 kategori:"Fashion",
+link:"#"
+},
+
+
+{
+nama:"Bendera Segitiga Merah Putih Sablon Garuda",
+harga:"Rp15.000",
+gambar:"https://via.placeholder.com/500x500?text=Bendera+Merah+Putih",
+kategori:"Rumah Tangga",
+link:"#"
+},
+
+
+{
+nama:"Nano Sportswear Baju Senam Merah Putih Premium",
+harga:"Rp166.500",
+gambar:"https://via.placeholder.com/500x500?text=Baju+Senam",
+kategori:"Fashion",
+link:"#"
+},
+
+
+{
+nama:"Sepatu Sneakers Wanita Kekinian Terlaris",
+harga:"Rp58.567",
+gambar:"https://via.placeholder.com/500x500?text=Sepatu+Sneakers",
+kategori:"Fashion",
+link:"#"
+},
+
+
+{
+nama:"Setelan Baju Senam Merah Putih Pria Wanita",
+harga:"Rp137.610",
+gambar:"https://via.placeholder.com/500x500?text=Setelan+Senam",
+kategori:"Fashion",
+link:"#"
+},
+
+
+{
+nama:"Bergo Hamidah Size XL Hijab Jersey",
+harga:"Rp24.609",
+gambar:"https://via.placeholder.com/500x500?text=Bergo+Hijab",
+kategori:"Fashion",
+link:"#"
+},
+
+
+{
+nama:"Tas Selempang Wanita Alesha",
+harga:"Rp36.500",
+gambar:"https://via.placeholder.com/500x500?text=Tas+Wanita",
+kategori:"Fashion",
+link:"#"
+},
+
+
+{
+nama:"Setelan Workout Rok / Setelan Senam Wanita",
+harga:"Rp148.500",
+gambar:"https://via.placeholder.com/500x500?text=Setelan+Workout",
+kategori:"Fashion",
+link:"#"
+},
+
+
+{
+nama:"Parfum Mr Crsh Tahan 6 Jam",
+harga:"Rp29.925",
+gambar:"https://via.placeholder.com/500x500?text=Parfum",
+kategori:"Kecantikan",
 link:"#"
 }
 
+
 ];
+
 
 function tampilProduk(data=produk){
 
+
 let html="";
 
-data.forEach(p=>{
 
-html+=`
+if(data.length===0){
 
-<div class="card">
+html=`
 
-<img src="${p.gambar}" alt="${p.nama}">
+<div class="tidak-ditemukan">
 
-<div class="card-content">
-
-<h3>${p.nama}</h3>
-
-<div class="harga">${p.harga}</div>
-
-<div class="kategori-label">
-Kategori: ${p.kategori}
-</div>
-
-<a class="beli" href="${p.link}" target="_blank">
-🛒 Beli di Shopee
-</a>
-
-</div>
+😔 Produk tidak ditemukan
 
 </div>
 
 `;
 
+}
+
+
+data.forEach(p=>{
+
+
+html+=`
+
+<div class="card">
+
+
+<img
+
+src="${p.gambar}"
+
+alt="${p.nama}"
+
+>
+
+
+<div class="card-content">
+
+
+<h3>
+
+${p.nama}
+
+</h3>
+
+
+<div class="harga">
+
+${p.harga}
+
+</div>
+
+
+<div class="kategori-label">
+
+Kategori: ${p.kategori}
+
+</div>
+
+
+<a
+
+class="beli"
+
+href="${p.link}"
+
+target="_blank"
+
+>
+
+🛒 Beli di Shopee
+
+</a>
+
+
+</div>
+
+
+</div>
+
+`;
+
+
 });
+
 
 document.getElementById("produk").innerHTML=html;
 
+
 }
+
 
 function cariProduk(){
 
-let kata=document.getElementById("search").value.toLowerCase();
+
+let kata=document
+
+.getElementById("search")
+
+.value
+
+.toLowerCase();
+
 
 let hasil=produk.filter(p=>
 
-p.nama.toLowerCase().includes(kata)
+
+p.nama
+
+.toLowerCase()
+
+.includes(kata)
+
 
 );
 
+
 tampilProduk(hasil);
+
 
 }
 
+
 function filterKategori(kategori){
+
 
 if(kategori==="Semua"){
 
@@ -276,19 +464,28 @@ return;
 
 }
 
+
 let hasil=produk.filter(p=>
+
 
 p.kategori===kategori
 
+
 );
+
 
 tampilProduk(hasil);
 
+
 }
+
 
 tampilProduk();
 
+
 </script>
 
+
 </body>
+
 </html>
